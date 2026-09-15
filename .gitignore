@@ -1,0 +1,23 @@
+# Dependencies & build
+node_modules/
+dist/
+build/
+.cache/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment & Secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Logs & temp
+*.log
+.wip/

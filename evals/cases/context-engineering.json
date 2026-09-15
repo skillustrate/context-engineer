@@ -1,0 +1,229 @@
+{
+  "skill_name": "context-engineering",
+  "trigger": {
+    "positive": [
+      {
+        "prompt": "What context should I load into the agent before starting this refactor?",
+        "top_k": 3
+      },
+      {
+        "prompt": "The model's output quality dropped mid-session, how do I fix its context?",
+        "top_k": 3
+      },
+      {
+        "prompt": "Set up rules files and context packing for my repository",
+        "top_k": 3
+      }
+    ],
+    "negative": [
+      {
+        "prompt": "Write unit tests for the date parser",
+        "owner": "test-driven-development"
+      },
+      {
+        "prompt": "Harden this endpoint against SQL injection",
+        "owner": "security-and-hardening"
+      }
+    ]
+  },
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "An agent session has degraded: responses are generic and it keeps forgetting project conventions. Fix the context setup.",
+      "expected_output": "A diagnosis of the context problem and a concrete loading strategy (rules files, packing, task-scoped context)",
+      "files": ["context-engineering"],
+      "expectations": [
+        "The response diagnoses probable context causes rather than blaming the model generally",
+        "A specific context-loading plan is produced (what to load, when, and why)",
+        "Context is scoped to the task instead of loading everything"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm working on a TypeScript project but the agent keeps suggesting JavaScript solutions. The codebase uses Vitest for testing. How do I fix this?",
+      "expected_output": "Diagnosis of context starvation (missing rules file) and specific loading strategy",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Identifies the root cause as missing or outdated rules file",
+        "Provides concrete CLAUDE.md content covering TypeScript, Vitest conventions",
+        "Does not suggest generic solutions that ignore project specifics"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My session has grown to 80 messages. The agent is losing focus and repeating earlier approaches. How do I manage this?",
+      "expected_output": "Context budget management strategy including compression patterns",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Recognizes the 75% threshold has been exceeded",
+        "Suggests applying compression patterns (one-liner summaries, pattern references)",
+        "Protects task-critical content while cutting deadweight"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "The agent is proposing to modify files that were deleted last week. It's also referencing APIs that don't exist. What's wrong?",
+      "expected_output": "Diagnosis of stale context and session restart recommendation",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Identifies stale context as the root cause",
+        "Recommends starting a fresh session with current file states",
+        "Suggests re-reading relevant source files to establish accurate baseline"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "I need to set up context for a new feature. The project uses React 18, TypeScript, and has specific conventions around error boundaries and colocated tests.",
+      "expected_output": "Brain dump pattern with selective include strategy",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Uses the Brain Dump pattern to structure initial context",
+        "Identifies relevant source files to load (existing examples of error boundaries, colocated tests)",
+        "Does not load entire codebase — only task-relevant sections"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "The agent keeps ignoring my explicit 'do not use default exports' rule from the rules file. How do I enforce this?",
+      "expected_output": "Diagnosis of context flooding or stale context, with specific remediation",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Identifies that ignored constraints indicate either context flooding (attention fragmentation) or stale context",
+        "Suggests compression to reduce deadweight and restore attention focus",
+        "May recommend session restart if rule violations persist after compression"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "I'm debugging a production issue. The PostgreSQL MCP server is down. How do I proceed?",
+      "expected_output": "MCP failure handling strategy with fallback patterns",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Recognizes MCP server failure scenario",
+        "Suggests graceful degradation: fall back to reading schema.sql files locally",
+        "Recommends surfacing the failure to the user and adjusting strategy accordingly"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "The agent is suggesting solutions that require modifying a file named 'UserService.ts' but it was renamed to 'UserServices.ts' last month. How do I fix this?",
+      "expected_output": "Diagnosis of stale context with specific recovery steps",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Identifies the root cause as stale context (outdated file references)",
+        "Recommends reading current file states to establish accurate baseline",
+        "Suggests re-running verification commands to confirm working tree state"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "I have a large project with multiple features. How do I maintain context across different areas without flooding the agent?",
+      "expected_output": "Hierarchical summary pattern and selective loading strategy",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Suggests maintaining a hierarchical summary index of the codebase",
+        "Recommends loading only the relevant section when working on specific areas",
+        "Does not suggest loading entire project at once"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "The agent is treating a config file I pasted as instructions. It's saying 'I will always use React hooks' without asking for confirmation.",
+      "expected_output": "Security consideration: prompt injection via untrusted content",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Identifies this as a prompt injection risk (treating data as directives)",
+        "Recommends surfacing the instruction to the user for explicit confirmation",
+        "Suggests treating config file content as informational, not authoritative"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "My session crashed due to OOM. The agent left half-written code in UserService.ts. How do I resume?",
+      "expected_output": "Session resumption pattern for crash recovery",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Recommends reading the incomplete file to understand current state",
+        "Suggests checking git status against recorded baseline",
+        "Provides decision framework: continue if coherent, restart if fragmented"
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "The agent is suggesting Jest for testing but the project uses Vitest. It also suggests .js files instead of .ts.",
+      "expected_output": "Context health check signals indicating degradation",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Identifies increasing hallucination rate as a context health signal",
+        "Suggests triggering compression or session restart based on thresholds",
+        "May recommend checking if rules file is actually loaded"
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "I need to verify that my context engineering setup is working. What metrics should I track?",
+      "expected_output": "Context engineering efficacy measurement framework",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Suggests tracking hallucination rate (<5% target)",
+        "Recommends convention adherence monitoring (>90% target)",
+        "Mentions token efficiency and session restart frequency as key metrics"
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "The agent is proposing to use a deprecated API that was removed in the last update. It's also suggesting patterns from an old version of the framework.",
+      "expected_output": "Stale context detection and remediation",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Identifies stale context as root cause (outdated patterns)",
+        "Recommends refreshing with current documentation or source files",
+        "Suggests verifying against current API signatures"
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "I'm working on a multi-step task. How do I prevent the agent from losing track of constraints as we progress?",
+      "expected_output": "Inline planning pattern and order-for-recency strategy",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Suggests using inline planning pattern before executing multi-step tasks",
+        "Recommends positioning task-critical content last in context (order for recency)",
+        "Mentions protecting hard constraints throughout the session"
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "I have a monolithic 3,000-line service file and need to update one validation helper. How do I prevent massive token burn when loading context?",
+      "expected_output": "JIT progressive disclosure strategy using AST skeletons and slice extraction",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Refuses to dump the entire 3,000-line file into the context window",
+        "Recommends progressive disclosure: AST symbol skeleton first, target slice extraction second",
+        "Advocates for diff-only / structured patch generation rather than full-file re-emission"
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "Our prompt caching costs are high because provider cache hits are below 10%. Every message seems to invalidate the cache. How do we architect prompt prefixes?",
+      "expected_output": "Tier-0 prompt cache prefix invariance architecture",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Identifies prefix variance (dynamic timestamps, session greetings, variable logs) as the cause of cache invalidation",
+        "Enforces the 4-Tier Memory Hierarchy: Tier 0 immutable prefix at the head, dynamic working buffer strictly at the tail",
+        "Targets >85% cache hit efficiency (CHE) for prompt caching savings"
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "During an automated bug fix in the auth router, the agent modified package.json to bump an unrelated dependency and changed db schema types. How do we prevent this?",
+      "expected_output": "Automated in-band blast-radius and scope boundary verification gate",
+      "files": ["context-engineering"],
+      "expectations": [
+        "Diagnoses scope creep and unconstrained diff blast-radius",
+        "Recommends an automated pre-commit scope boundary gate that compares git diff against designated task files",
+        "Rejects patches touching sensitive or out-of-scope files (package.json, schema files)"
+      ]
+    }
+  ]
+}
