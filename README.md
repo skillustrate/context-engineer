@@ -94,16 +94,13 @@ context-engineer/
 │   └── AGENTS.md                            # OpenAI Codex / AGENTS standard
 ├── skills/
 │   └── context-engineering/
-│       ├── SKILL.md                         # Core agent skill instructions & contract
-│       └── README.md                        # Operational companion guide
+│       └── SKILL.md                         # Core agent skill instructions & contract
 └── evals/
-    ├── README.md                            # Evaluation framework & scoring spec
     ├── cases/
     │   └── context-engineering.json         # 18 behavioral & benchmark eval cases
     ├── fixtures/
     │   └── context-engineering/             # Test fixtures & audit testbeds
     └── security/
-        ├── SECURITY-CHECKLIST.md            # Pre-deployment verification gates
         └── context-engineering-security.json# Automated security eval cases
 ```
 
@@ -122,11 +119,19 @@ context-engineer/
 
 ---
 
+## Evaluation & Benchmarks
+
+The repository includes 18 automated test cases in `evals/cases/context-engineering.json`:
+- **Trigger & Routing**: Tests that prompts correctly activate `context-engineering` over competing skills.
+- **Behavioral Scenarios**: Tests response degradation, rules file recovery, session boundary handoffs, and MCP failure resilience.
+- **Quantitative Benchmarks**: Evaluates progressive disclosure (AST outlines under pressure), Tier-0 prefix stability (KV cache invariance), and git diff blast-radius boundaries.
+
+---
+
 ## Documentation
 
 * [Core Skill Contract (SKILL.md)](skills/context-engineering/SKILL.md)
-* [Skill Operational Guide](skills/context-engineering/README.md)
-* [Evaluation Suite](evals/README.md)
+* [Evaluation Benchmark Cases](evals/cases/context-engineering.json)
 
 ---
 

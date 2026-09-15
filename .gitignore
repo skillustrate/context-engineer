@@ -1,6 +1,6 @@
 *.md
 !SKILL.md
-!README.md
+!/README.md
 !context-audit.md
 !templates/**
 
