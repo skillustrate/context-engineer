@@ -17,6 +17,35 @@ Context engineering is the practice of deliberately curating what an AI coding a
 
 ---
 
+## Quick Installation & Universal Harness Support
+
+Install in one command for any supported coding harness:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/skillustrate/context-engineer/main/install.sh | bash
+```
+
+### Supported Harnesses
+
+| Agent Harness | Installation Method | Target Path |
+|---|---|---|
+| **Claude Code** | Native Plugin or Skill | `.claude/skills/context-engineering` |
+| **Google Antigravity / Gemini** | Native Skill | `.gemini/skills/context-engineering` |
+| **Cursor** | Rules Template | `.cursor/rules/context-engineering.mdc` |
+| **Windsurf (Cascade)** | Rules Template | `.windsurfrules` |
+| **GitHub Copilot** | Instructions Template | `.github/copilot-instructions.md` |
+| **OpenAI Codex** | AGENTS Standard | `AGENTS.md` |
+
+```bash
+# Manual installation for Claude Code:
+git clone https://github.com/skillustrate/context-engineer.git ~/.claude/skills/context-engineering
+
+# Manual installation for Google Antigravity:
+git clone https://github.com/skillustrate/context-engineer.git ~/.gemini/antigravity-cli/skills/context-engineering
+```
+
+---
+
 ## Architecture: 4-Tier Memory Hierarchy
 
 ```
@@ -49,11 +78,23 @@ Context engineering is the practice of deliberately curating what an AI coding a
 ```
 context-engineer/
 ├── plugin.json                              # Package manifest & skill registration
+├── install.sh                               # Universal multi-harness installer
 ├── LICENSE                                  # MIT License
 ├── README.md                                # Root documentation & guide
 ├── AUDIT-REPORT.md                          # Cybersecurity & hardening audit
 ├── FINOPS-GUIDE.md                          # Token budgeting & FinOps ROI framework
 ├── SECURITY.md                              # Threat model & sanitization standards
+├── .claude-plugin/                          # Claude Code plugin & marketplace discovery
+│   ├── plugin.json
+│   └── marketplace.json
+├── .codex-plugin/                           # OpenAI Codex manifest
+├── .opencode/                               # OpenCode runtime manifest
+├── templates/                               # Pre-configured harness drop-ins
+│   ├── CLAUDE.md                            # Claude Code project rules
+│   ├── .cursorrules                         # Cursor IDE configuration
+│   ├── .windsurfrules                       # Windsurf Cascade configuration
+│   ├── copilot-instructions.md              # GitHub Copilot instructions
+│   └── AGENTS.md                            # OpenAI Codex / AGENTS standard
 ├── skills/
 │   └── context-engineering/
 │       ├── SKILL.md                         # Core agent skill instructions & contract

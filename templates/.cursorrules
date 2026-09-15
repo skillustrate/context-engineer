@@ -1,0 +1,17 @@
+# .cursorrules — Context Engineering Protocol
+
+# 1. Deterministic Memory & Prefix Invariance
+- Maintain stable prefix context to maximize KV cache hits.
+- Do not inject ad-hoc timestamps or variable system summaries at the start of prompts.
+
+# 2. Progressive Disclosure (Anti-Flooding)
+- Before editing large files, read only exported symbol signatures or relevant function slices.
+- Cap exploratory searches to maximum 15 matches (file:line:signature).
+
+# 3. Patch Generation & Diff Verification
+- Generate targeted search-and-replace patches or unified diffs.
+- Avoid rewriting unchanged methods or boilerplate.
+- Run typecheck and unit tests immediately after applying modifications.
+
+# 4. Scope Boundaries
+- Do not touch configuration or dependency manifests unless explicitly instructed.

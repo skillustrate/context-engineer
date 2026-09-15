@@ -1,0 +1,6 @@
+{
+  "name": "context-engineer",
+  "version": "1.0.0",
+  "description": "Production-grade context engineering skills and deterministic memory architecture for AI coding agents.",
+  "skills": "./skills"
+}
