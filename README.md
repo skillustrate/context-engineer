@@ -81,9 +81,6 @@ context-engineer/
 ├── install.sh                               # Universal multi-harness installer
 ├── LICENSE                                  # MIT License
 ├── README.md                                # Root documentation & guide
-├── AUDIT-REPORT.md                          # Cybersecurity & hardening audit
-├── FINOPS-GUIDE.md                          # Token budgeting & FinOps ROI framework
-├── SECURITY.md                              # Threat model & sanitization standards
 ├── .claude-plugin/                          # Claude Code plugin & marketplace discovery
 │   ├── plugin.json
 │   └── marketplace.json
@@ -128,9 +125,7 @@ context-engineer/
 ## Documentation
 
 * [Core Skill Contract (SKILL.md)](skills/context-engineering/SKILL.md)
-* [FinOps & Operational Guide](FINOPS-GUIDE.md)
-* [Security Threat Model & Defenses](SECURITY.md)
-* [Cybersecurity Audit Report](AUDIT-REPORT.md)
+* [Skill Operational Guide](skills/context-engineering/README.md)
 * [Evaluation Suite](evals/README.md)
 
 ---

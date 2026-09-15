@@ -1,3 +1,9 @@
+*.md
+!SKILL.md
+!README.md
+!context-audit.md
+!templates/**
+
 # Dependencies & build
 node_modules/
 dist/
@@ -21,5 +27,3 @@ Thumbs.db
 # Logs & temp
 *.log
 .wip/
-review.md
-
